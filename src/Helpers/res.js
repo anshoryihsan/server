@@ -9,14 +9,6 @@ const res = {
     res.json(data);
   },
 
-  successUpload: (value, res, msg) => {
-    const data = {
-      success: true,
-      status: 201,
-      image: `${process.env.BASE_URL}/images/${req.file.filename}`,
-    };
-  },
-
   failed: (value, res, msg) => {
     const data = {
       success: false,
