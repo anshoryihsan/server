@@ -4,8 +4,8 @@ const readXlsxFile = require("read-excel-file/node");
 
 const importFile = async (req, res) => {
   let path = "./public/file/" + req.file.filename;
-  let fields = [];
   await readXlsxFile(path).then((rows) => {
+    let fields = [];
     rows.shift();
     rows.forEach((rows) => {
       let data = {
@@ -15,11 +15,11 @@ const importFile = async (req, res) => {
       };
       fields.push(data);
     });
+    mhsModel
+      // .importFile(fields)
+      .importFile(rows)
+      .then((data) => response.success(data, res, "upload file berhasil"))
+      .catch((err) => response.failed(err.message, res));
   });
-  mhsModel
-    .importFile(fields)
-    .then((data) => response.success(data, res, "upload file berhasil"))
-    .catch((err) => response.failed(err.message, res));
-  console.log(fields);
 };
 module.exports = importFile;

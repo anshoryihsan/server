@@ -16,7 +16,7 @@ module.exports = {
   },
   deleteNilai: (req, res) => {
     nilaiModel
-      .deleteNilai(req.params.id)
+      .deleteNilai(req.params.id, req.query.id_matakuliah)
       .then((data) => response.success(data, res, "berhasil dihapus"))
       .catch((err) => response.failed(err, res));
   },

@@ -39,10 +39,10 @@ module.exports = {
       );
     });
   },
-  deleteNilai: (id) => {
+  deleteNilai: (idmh, idmk) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `DELETE FROM data_nilai WHERE id_mahasiswa=${id}`,
+        `DELETE FROM data_nilai WHERE id_mahasiswa=${idmh} AND id_matakuliah="${idmk}"`,
         (err, res) => {
           if (!err) {
             resolve();
